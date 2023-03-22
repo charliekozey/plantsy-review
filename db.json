@@ -10,7 +10,7 @@
       "id": 2,
       "name": "ZZ Plant",
       "image": "./images/zz-plant.jpg",
-      "price": 25.98
+      "price": "5"
     },
     {
       "id": 3,
@@ -22,7 +22,7 @@
       "id": 4,
       "name": "Pothos",
       "image": "./images/pothos.jpg",
-      "price": 12.11
+      "price": 80
     },
     {
       "id": 5,
