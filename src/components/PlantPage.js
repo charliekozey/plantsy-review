@@ -45,11 +45,12 @@ function PlantPage() {
     // all the plants except the changed plant stay the same
     // the changed plant (if plant.id == id) gets updated
 
-    plantsArray.forEach(plant => {
-      if (plant.id === id) plant.price = newPrice
-    })
+    
+    setPlantsArray(plantsArray.map(plant => {
+      if (plant.id === id)
+        return
 
-    const updatedPlants = plantsArray
+    }))
 
   }
 
