@@ -40,17 +40,19 @@ function PlantPage() {
       },
       body: JSON.stringify({price: parseInt(newPrice)})
     })
+    .then(res => res.json())
+    .then(updatedPlant => {
+
+      setPlantsArray(plantsArray.map(plant => {
+        return plant.id === id ? updatedPlant : plant
+        }))
+    })
 
     // set plants array to:
     // all the plants except the changed plant stay the same
     // the changed plant (if plant.id == id) gets updated
 
-    
-    setPlantsArray(plantsArray.map(plant => {
-      if (plant.id === id)
-        return
 
-    }))
 
   }
 

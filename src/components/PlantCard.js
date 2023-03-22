@@ -22,7 +22,7 @@ function PlantCard({ plant, deletePlant, updatePlantPrice }) {
 
     updatePlantPrice(updatedPrice, plant.id)
 
-    e.target.reset()
+    setUpdatedPrice("")
   }
 
   // #endregion //
