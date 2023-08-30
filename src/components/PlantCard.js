@@ -1,15 +1,37 @@
-import React from "react";
+import {useEffect, useState} from "react";
 
-function PlantCard() {
+function PlantCard({ plant }) {
+  
+  const [inStock, setInStock] = useState(plant.in_stock)
+  
+  function toggleInStock() {
+    setInStock(inStock => !inStock)
+  }
+  
+  // useEffect watches for changes to inStock state variable
+  // sends PATCH request to update backend whenever inStock changes
+  useEffect(() => {
+    fetch(`http://localhost:6001/plants/${plant.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        in_stock: inStock
+      })
+    })
+  }, [inStock])
+
   return (
     <li className="card">
-      <img src={"https://via.placeholder.com/400"} alt={"plant name"} />
-      <h4>{"plant name"}</h4>
-      <p>Price: {"plant price"}</p>
-      {true ? (
-        <button className="primary">In Stock</button>
+      <img src={plant.image} alt={plant.name} />
+      <h4>{plant.name}</h4>
+      <p>Price: {plant.price}</p>
+      {inStock ? (
+        <button className="primary" onClick={toggleInStock}>In Stock</button>
       ) : (
-        <button>Out of Stock</button>
+        <button  onClick={toggleInStock}>Out of Stock</button>
       )}
     </li>
   );
